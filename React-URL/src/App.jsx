@@ -13,10 +13,10 @@ function App() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("https://link-shortener-pn72.onrender.com/api/shorten", {
+      const res = await axios.post("https://nex-link.onrender.com/api/shorten", {
         originalUrl: url,
       });
-      setShortUrl(`https://link-shortener-pn72.onrender.com/${res.data.shortId}`);
+      setShortUrl(`https://nex-link.onrender.com/${res.data.shortId}`);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -48,7 +48,7 @@ function App() {
       </div>
       <div className="content-overlay">
         <div className="glass-card">
-          <h1> Link Shrinker</h1>
+          <h1>Nex Link</h1>
           <p className="subtitle">Make your long URLs short & sweet.</p>
 
           <form onSubmit={handleSubmit}>
