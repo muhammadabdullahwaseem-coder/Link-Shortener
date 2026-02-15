@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://link-shortener-pn72.onrender.com"
+        "https://link-shortener-by-mrab.onrender.com"
     ],
     credentials: true
 }));
