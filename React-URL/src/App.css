@@ -1,0 +1,174 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif; 
+  background-color: #000;
+}
+
+
+.app-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.gradient-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.content-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; 
+}
+
+
+
+.glass-card {
+  pointer-events: auto;
+  width: 90%;
+  max-width: 480px;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 24px;
+
+  
+  
+  background: rgba(255, 255, 255, 0.05);
+  
+  
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  
+  
+  border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-right: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+
+  
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5), 
+    inset 0 0 20px rgba(255, 255, 255, 0.05); 
+
+  animation: floatUp 0.8s ease-out;
+}
+
+
+input[type="text"] {
+  width: 100%;
+  padding: 18px;
+  
+  
+  background: rgba(0, 0, 0, 0.4); 
+  
+  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1); 
+}
+
+.shorten-btn {
+  padding: 16px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.shorten-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.4);
+}
+
+.shorten-btn:active {
+  transform: scale(0.98);
+}
+
+
+.result-box {
+  margin-top: 25px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.short-link {
+  color: #a5b4fc;
+  font-weight: 500;
+  margin-left: 10px;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  background: #ffffff;
+  color: #4f46e5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-width: 100px;
+}
+
+.copy-btn:hover {
+  background: #eef2ff;
+  transform: scale(1.05);
+}
+
+
+.copy-btn.copied {
+  background: #10b981; 
+  color: white;
+  transform: scale(1.1);
+}
+
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
