@@ -7,24 +7,16 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(cors());
 
-// Database Connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/urlshortener')
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-// --- ROUTES ---
-
-// 1. Generate Short URL
 app.post('/api/shorten', async (req, res) => {
   const { originalUrl } = req.body;
-  
-  // Simple generation of 6-char ID
-  // Note: For older nanoid versions use require('nanoid'), for v3+ import might differ
-  // Or just write a quick random string function if nanoid gives version errors
+
   const shortId = nanoid(6); 
 
   try {
@@ -46,13 +38,15 @@ app.post('/api/shorten', async (req, res) => {
   }
 });
 
-// 2. Redirect to Original URL
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
+
 app.get('/:code', async (req, res) => {
   try {
     const url = await Url.findOne({ shortId: req.params.code });
 
     if (url) {
-      // Increment clicks (Optional feature)
       url.clicks++;
       url.save();
       return res.redirect(url.originalUrl);
