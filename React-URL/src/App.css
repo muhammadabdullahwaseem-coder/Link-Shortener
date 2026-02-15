@@ -38,6 +38,10 @@ body, html {
 
 
 
+
+.subtitle {
+  color: #05c2f1;
+}
 .glass-card {
   pointer-events: auto;
   width: 90%;
