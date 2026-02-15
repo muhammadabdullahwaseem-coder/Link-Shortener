@@ -8,7 +8,14 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "https://link-shortener-pn72.onrender.com"
+    ],
+    credentials: true
+}));
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/urlshortener')
   .then(() => console.log('MongoDB Connected'))
@@ -59,5 +66,6 @@ app.get('/:code', async (req, res) => {
   }
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
