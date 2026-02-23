@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
+import { QRCodeCanvas } from "qrcode.react";
 import "./App.css";
 import { color } from "three/tsl";
 
@@ -14,9 +15,12 @@ function App() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("https://nex-link.onrender.com/api/shorten", {
-        originalUrl: url,
-      });
+      const res = await axios.post(
+        "https://nex-link.onrender.com/api/shorten",
+        {
+          originalUrl: url,
+        },
+      );
       setShortUrl(`https://nex-link.onrender.com/${res.data.shortId}`);
       setLoading(false);
     } catch (err) {
@@ -53,7 +57,6 @@ function App() {
           <p className="subtitle">Make your long URLs short & sweet.</p>
           <br></br>
 
-
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <input
@@ -70,16 +73,28 @@ function App() {
             </button>
           </form>
 
+          <br/>
+
           {shortUrl && (
             <div className="result-box">
               <span className="short-link">{shortUrl}</span>
+              
 
               <button
                 onClick={handleCopy}
                 className={`copy-btn ${copied ? "copied" : ""}`}
               >
                 {copied ? "Copied! 🎉" : "Copy 📋"}
+                
               </button>
+              <QRCodeCanvas
+                value={shortUrl}
+                size={120}
+                bgColor={"#ffffff"}
+                fgColor={"#000000"}
+                level={"H"} 
+                includeMargin={true}
+              />
             </div>
           )}
         </div>
@@ -89,4 +104,3 @@ function App() {
 }
 
 export default App;
-

@@ -40,7 +40,7 @@ body, html {
 
 
 .subtitle {
-  color: #05c2f1;
+  color: #ffffff;
 }
 .glass-card {
   pointer-events: auto;
@@ -121,58 +121,83 @@ input[type="text"]:focus {
 
 
 .result-box {
-  margin-top: 25px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
   display: flex;
+  flex-direction: column;
+  align-items: center;  
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  padding: 20px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .short-link {
-  color: #a5b4fc;
-  font-weight: 500;
-  margin-left: 10px;
-  font-size: 0.95rem;
+  color: #fff;
+  font-family: monospace;
+  font-size: 1.1rem;      
+  width: 100%;
+  text-align: center;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-overflow: ellipsis; 
+  white-space: normal;     
+  word-break: break-all; 
+  overflow: visible;
+  max-width: 70%;
+}
+.result-section {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
 }
 
+
 .copy-btn {
-  background: #ffffff;
-  color: #4f46e5;
-  border: none;
-  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 0;      
+  width: 100%;
   border-radius: 8px;
-  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  min-width: 100px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
 }
 
 .copy-btn:hover {
-  background: #eef2ff;
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
-
 
 .copy-btn.copied {
-  background: #10b981; 
-  color: white;
-  transform: scale(1.1);
+  background: #4ade80;
+  color: black;
+  border-color: #4ade80;
 }
 
 
-@keyframes floatUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: floatUp 0.6s ease-out;
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+.qr-frame {
+  background: white;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+}
+
+.qr-box p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  margin: 0;
 }
